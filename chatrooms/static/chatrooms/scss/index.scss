@@ -1,0 +1,34 @@
+.blocks-list {
+    margin: rem(64) 0;
+    align-items: flex-start;
+    gap: rem(100);
+
+    &__block {
+        width: 65%;
+        align-items: flex-start;
+        text-align: flex-start;
+        gap: rem(20);
+
+        .text-input {
+        }
+        .button-input {
+        }
+    }
+    &__title {
+    }
+    &__body {
+        gap: rem(20);
+    }
+}
+.enter-pulse {
+    color: $text;
+    padding: rem(12);
+    font-size: rem(16);
+    border-radius: 4px;
+
+    &_main {
+        text-align: center;
+        width: 200%;
+        font-size: rem(32);
+    }
+}

@@ -1,0 +1,167 @@
+{% extends 'main/base.html' %} 
+{% load static %}
+{% block title %}Homepage{%endblock %} 
+{% block head %}
+    <meta name="description" content="{{site_description}}" />
+    <meta name="keywords" content="{{site_keywords}}" />
+{% endblock %} 
+{% block body %}
+<div class="wrapper wrapper_black">
+        {% include 'main/nav.html' %}
+        <div class="black-area">
+            <div class="content-container">
+                <div class="welcome row">
+                    <div class="welcome__left column">
+                        <div class="welcome__specialty">front-end & back-end developer</div>
+                        <div class="welcome__greets"><h2 class="great-header">Hello, I'm a web apps developer</h2></div>
+                        <div class="welcome__details">My mission is to develop a web application, do page markup, style it and make it live by JS scripts and Python's Django logic.</div>
+                        <div class="welcome__text-me">
+                            <a class="to-smile" href="https://t.me/iAmMason">
+                                <div class="icon"><i class="fa-brands fa-telegram"></i></div>
+                                <div class="text">Text me now!</div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="welcome__right row">
+                        <div class="welcome__rate"><h2 class="great-header">Mood<br>rate</h2></div>
+                        <div class="welcome__face row">
+                            <h1 class="great-header row">
+                                <i class="fa-solid fa-smile"></i>
+                                <div class="welcome__arrow-container">
+                                    <span class="animate>
+                                        <i class="fa-solid fa-arrow-up hidden"></i>
+                                    </span>
+                                </div>
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="white-area">
+            <div class="content-container">
+                <div class="portfolio">
+                    <div class="portfolio__title"><h2 class="great-header">Current Portfolio</h2></div>
+                    <ul class="portfolio__list items-list">
+                        {% comment %} 
+                        {% for portfolio in portfolios %}
+                            {% if portfolio.is_first %} 
+                                <!-- Open container that contain two items -->
+                                <li class="portfolio__item items-list__item">
+                                    <!-- First item -->
+                                    <div class="portfolio__first items-list__first">
+                                        <div class="portfolio__item-image items-list__image">
+                                            <a target="_blank" href="{{portfolio.link}}"><img src="/media/{{portfolio.image}}" /></a>
+                                        </div>
+                                        <a class="portfolio__item-title items-list__title" target="_blank" href="{{portfolio.link}}">{{portfolio.name}}</a>
+                                    </div>
+                            {% else %}
+                                    <!-- Second item -->
+                                    <div class="portfolio__second items-list__second">
+                                        <a class="portfolio__item-title items-list__title" target="_blank" href="{{portfolio.link}}">{{portfolio.name}}</a>
+                                        <div class="portfolio__item-image items-list__image">
+                                            <a target="_blank" href="{{portfolio.link}}"><img src="/media/{{portfolio.image}}" /></a>
+                                        </div>
+                                    </div>
+                                <!-- Close container that contain two items -->
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                        {% endcomment %}
+                    </ul>
+                    <div class="portfolio__loadmore-container column">
+                        <button class="portfolio__loadmore button-input" onclick="visible+=4; getMore();"><span class="animate"><i class="fa-solid fa-angles-down"></i></span> Load more!</button>
+                    </div> 
+                </div>
+            </div>
+        </div>
+        <div class="help-area">
+            <div class="content-container">
+                <div class="help">
+                    <h3 class="great-header">Need a quick Django tip or consultation?</h3>
+                    <a target="_blank" href="mailto:maksistef@gmail.com" class="help__button">Then email me right now!</a>
+                </div>
+            </div>
+        </div>
+        <div class="black-area">
+            <div class="content-container">
+                <div class="technologies column">
+                    <div class="technologies__title"><h2 class="great-header">Useful technology to grow your business</h1></div>
+                    <ul class="technologies-list row">
+                        <li class="technologies-list__item column">
+                            <div class="title">Responsive layout</div>
+                            <div class="body">Your website will fit perfectly on any device, mobile, tablet, laptop or desktop.</div>
+                        </li>
+                        <li class="technologies-list__item column">
+                            <div class="title">High Performance</div>
+                            <div class="body">Designed and optimized to load your site faster, providing satisfying UI/UX.</div>
+                        </li>
+                        <li class="technologies-list__item column">
+                            <div class="title">SEO OPTIMIZATION</div>
+                            <div class="body">Your target audience will find your site and services on Google.</div>
+                        </li>
+                    </ul>
+                    <div class="welcome__text-me">
+                        <a class="to-smile" href="https://t.me/iAmMason">
+                            <div class="icon"><i class="fa-brands fa-telegram"></i></div>
+                            <div class="text">Text me now!</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-items row">
+                    <div class="footer-items__left row">
+                        <div class="footer-items__logo"><img src="{% static 'main/img/logo/logo.png' %}"></div>
+                        <div class="footer-items__pillar"></div>
+                        <div class="footer-items__copyrights">MakStef Ⓒ all rights served</div>
+                    </div>
+                    <div class="footer-items__right row">
+                        <div class="footer-items__email"><a target="_blank" href="mailto:maksistef@gmail.com">maksistef@gmail.com</a></div>
+                            <ul class="footer-items__socials row">
+                                <li class="footer-items__social"><a target="_blank" href="https://t.me/iAmMason">
+                                    <i class="fa-brands fa-telegram"></i>
+                                </a></li>
+                                <li class="footer-items__social"><a target="_blank" href="https://www.facebook.com/maxymstefaniv">
+                                    <i class="fa-brands fa-facebook"></i>
+                                </a></li>
+                                <li class="footer-items__social"><a target="_blank" href="https://www.instagram.com/maxymstefaniv">
+                                    <i class="fa-brands fa-instagram"></i>
+                                </a></li>
+                                <li class="footer-items__social"><a target="_blank" href="https://twitter.com/MaksimStefaniv">
+                                    <i class="fa-brands fa-twitter"></i>
+                                </a></li>
+                                <li class="footer-items__social"><a onclick="popUpShow(phonePopUp)">
+                                    <i class="fa-solid fa-phone pointer"></i>
+                                </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    {% comment %} 
+    <!-- Phone number popup html -->
+    <div class="phone-popup">
+        <div class="phone-popup__background background"></div>
+        <div class="phone-popup__container container">
+            <div class="phone-popup__close" onclick="deleteItem('.phone-popup')"><span class="red"><i class="fa-solid fa-xmark"></i></span></div>
+            <div class="phone-popup__text text">
+                <span class="phone-popup__number">+380673502470</span>
+                <button class="phone-popup__clipboard" onclick="copyNum()">
+                    <i class="fa-solid fa-paste">Copy it! </i>
+                    <i class="hidden fa-solid fa-circle-check">Copied! </i>
+                </button>
+            </div>
+        </div>
+    </div> 
+    {% endcomment %}
+{% endblock %}
+{% block scripts %}
+    {% comment %} <script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script> {% endcomment %}
+    <script src="{% static 'main/js/index.js' %}"></script>
+    <script src="{% static 'main/js/loadMore.js' %}"></script>
+{% endblock %}

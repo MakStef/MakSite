@@ -1,0 +1,35 @@
+<div class="navigation">
+    {% if user.is_authenticated %}
+        <div class="userBx">
+            <div class="imgBx"><i class="fa-solid fa-user-large"></i></div>
+            <p class="username">{{user.get_username}}</p>
+        </div>
+        <div class="menuToggle"></div>
+        <ul class="menu">
+            <li><a tabindex="-1" href="{% url 'main:index' %}">Homepage</a></li>
+            <li><a tabindex="-1" href="{% url 'chat:index' %}">Live Chat</a></li>
+            <li><a tabindex="-1" href="{% url 'main:help'%}">Help</a></li>
+            <li><a tabindex="-1" href="{% url 'account_logout' %}">Log out</a></li>
+        </ul>
+    {% else %}
+        <div class="userBx">
+            <div class="imgBx"><i class="fa-solid fa-user-secret"></i></div>
+            <p class="username">Anonym</p>
+        </div>
+        <div class="menuToggle"></div>
+        <ul class="menu">
+            <li><a tabindex="-1" href="{% url 'main:index' %}">Homepage</a></li>
+            <li><a tabindex="-1" href="{% url 'chat:index' %}">Live Chat</a></li>
+            <li><a tabindex="-1" href="{% url 'main:help'%}">Help</a></li>
+            <li><a tabindex="-1" href="{% url 'account_login' %}">Log in</a></li>
+            <li><a tabindex="-1" href="{% url 'account_signup' %}">Register</a></li>
+        </ul>
+    {% endif %}
+    <script>
+        let menuToggle = document.querySelector(".menuToggle");
+        let navigation = document.querySelector(".navigation");
+        menuToggle.onclick = function () {
+            navigation.classList.toggle("active");
+        };
+    </script>
+</div>

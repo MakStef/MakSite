@@ -1,0 +1,151 @@
+// ================= Import vars =================
+@import "../../../../main/static/main/scss/vars.scss";
+
+// ================= Import styles =================
+@import "../css/null.css";
+@import "../../../../main/static/main/scss/multipurpose.scss",
+    "../../../../main/static/main/scss/nav.scss",
+    "../../../../main/static/main/scss/index.scss", "index.scss", "room.scss";
+
+// ================= Styles =================
+// Navigation styles
+.navigation {
+    @include navigation(
+        $shadow: 0 rem(20) rem(40),
+        $shadow-color: rgba(#000, 0.5)
+    );
+}
+// Footer styles
+.footer {
+    background-color: $ftr-bgc;
+    color: $text;
+    width: 100%;
+    .container {
+        margin: 0 auto;
+        width: 90%;
+    }
+    &-items {
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: space-between;
+        padding: rem(38) 0;
+        gap: rem(80);
+
+        // Left side
+        &__left {
+            flex: 0 1 auto;
+            gap: rem(26);
+            align-items: center;
+        }
+        &__logo {
+            height: rem(56);
+            text-align: center;
+
+            img {
+                height: 100%;
+            }
+        }
+        &__pillar {
+            width: 2px;
+            height: rem(52);
+            background-color: $ftr-text;
+        }
+        &__copyrights {
+            text-transform: uppercase;
+            color: $ftr-text;
+        }
+        // Right side
+        &__right {
+            flex: 1 0 auto;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 10%;
+            font-size: rem(20);
+        }
+        &__email {
+            transition: all 285ms linear;
+            @include underscore(
+                $h: 2px,
+                $bgi: linear-gradient(to right, #efb631, #f10000)
+            );
+            &:hover {
+                transform: scale(1.2);
+            }
+        }
+        &__socials {
+            font-size: 1.4em;
+            justify-content: center;
+            gap: rem(16);
+        }
+        &__social {
+            transition: 225ms ease-out;
+            &:hover {
+                transform: scale(1.1);
+                filter: opacity(0.75);
+            }
+        }
+    }
+    // Adaptive
+    @media screen and (max-width: 840px) {
+        .footer-items {
+            flex-direction: column;
+            align-items: center;
+            gap: rem(24);
+
+            &__right {
+                flex-direction: column;
+                align-items: center;
+                gap: rem(24);
+            }
+        }
+    }
+}
+.phone-popup {
+    @include pop-up($bgc: #fff);
+    &__container {
+        position: relative;
+        padding: 5% 0;
+    }
+    &__close {
+        font-size: rem(32);
+        cursor: pointer;
+        position: absolute;
+        right: rem(8);
+        top: rem(8);
+    }
+    &__text {
+        border: 1px #000 solid;
+        padding: rem(8);
+        background-color: #fff;
+    }
+    &__clipboard {
+        font-size: rem(24);
+        position: relative;
+        padding: rem(8);
+        border-radius: 4px;
+        background-color: #007800;
+
+        .fa-solid {
+            transition: 150ms;
+        }
+        .hidden {
+            display: none;
+            transform: scale(0);
+        }
+    }
+}
+// Content styles
+.wrapper {
+    background-color: $bgc;
+    color: $text;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100%;
+    width: 100%;
+}
+.content-container {
+    width: 80%;
+    flex: 1 1 auto;
+}

@@ -1,0 +1,63 @@
+{% extends "chatrooms/base.html" %}
+{% load static %}
+{% block title %}{{room_name|capfirst}} Chatroom{% endblock %}
+{% block body %}
+    <div class="wrapper column">
+        <div class="content-container column">
+            <div class="leave">
+                <div class="leave__container">
+                    <a class="button-input button-pulse leave__button-pulse" href="{% url 'chat:index' %}">Leave</a>
+                </div>
+            </div>
+            <div id="chat-log" class="chat-log column">
+                {% for chat in chats.all %}
+                {% if chat.user.id == request.user.id %}
+                        {% if chat.get_previous_user == request.user.id %}
+                        <div class="message sender previous-is-sender">
+                                {{ chat.content }}
+                            </div>
+                        {% else %}
+                            <div class="message sender">
+                                {{ chat.content }}
+                            </div>
+                        {% endif %}
+                    {% else %}
+                        {% if chat.get_previous_user == chat.user_id %}
+                            <div class="message sender previous-is-sender">
+                                {{ chat.content }}
+                            </div>
+                        {% else %}
+                            <div class="message receiver">
+                                {{ chat.content }}
+                            </div>
+                            {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="inputs column">
+                <div class="inputs__container row">
+                    <div class="input-group">
+                        <input class="text-input" id="chat-message-input" type="text" />
+                        <label class="text-input-label" for="chat-message-input">Message</label>
+                    </div>
+                    <button class="send-button row" id="chat-message-submit" type="submit">
+                        <div class="circle">
+                            <span class="animate">
+                                <div class="to-side">
+                                    <i class="fa-solid fa-location-arrow"></i>
+                                </div>
+                            </span>
+                        </div>
+                    </button>
+                    {{ room_name|json_script:"room-name" }}
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ request.user.id|json_script:"user_id" }}
+{% endblock %}
+{% block scripts %}
+    <script type="module" src="{% static 'chatrooms/js/room.js' %}"></script>
+{% endblock  %}
+</body>
+</html>

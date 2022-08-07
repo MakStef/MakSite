@@ -1,0 +1,295 @@
+// ================= Functions =================
+@function rem($value) {
+    $remValue: ($value / 16) + rem;
+    @return $remValue;
+}
+
+// ================= Mixins =================
+@mixin underscore($h: 1px, $w: 100%, $bgc: #fff, $bgi: none) {
+    position: relative;
+
+    &::after {
+        width: $w;
+        height: $h;
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        content: "";
+        background-color: $bgc;
+        background-image: $bgi;
+    }
+}
+@mixin pop-up($w: 20rem, $h: 4rem, $bgc: #fff, $sz: 1.2rem, $clr: #000) {
+    display: flex;
+    position: fixed;
+    left: 0;
+    top: 0;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    z-index: 1000;
+    height: 100vh;
+
+    .background {
+        z-index: 1000;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #000;
+        opacity: 0.8;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        z-index: 1001;
+        background-color: $bgc;
+        border-radius: 4px;
+        width: $w;
+        height: $h;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .text {
+        font-size: $sz;
+        color: $clr;
+        border-radius: 4px;
+    }
+}
+@mixin link(
+    $bgc: #fff,
+    $clr: #000,
+    $bgi: none,
+    $icon-sz: 2.5rem,
+    $text-sz: 1.8rem,
+    $gap: 1rem,
+    $p: 8px
+) {
+    a {
+        color: $clr;
+        display: inline-flex;
+        position: relative;
+        flex-direction: row;
+        align-items: center;
+        padding: $p;
+        border-radius: 40px;
+        background-image: $bgi;
+        background-color: $bgc;
+        gap: $gap;
+
+        .icon {
+            text-align: center;
+            font-size: $icon-sz;
+        }
+        .text {
+            font-size: $text-sz;
+        }
+    }
+}
+// ================= Tags =================
+html,
+body {
+    font-family: $font-fam;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-transform: uppercase;
+}
+h1 {
+    font-size: rem(38);
+}
+h2 {
+    font-size: rem(32);
+}
+h3 {
+    font-size: rem(28);
+}
+h4 {
+    font-size: rem(24);
+}
+h5 {
+    font-size: rem(20);
+}
+h6 {
+    font-size: rem(16);
+}
+a {
+    color: inherit;
+    text-decoration: none;
+}
+// ================= Classes =================
+// Simple multipurpose classes
+.none {
+    display: none;
+}
+.row {
+    display: flex;
+    flex-direction: row;
+}
+.column {
+    display: flex;
+    flex-direction: column;
+}
+.red {
+    color: red;
+}
+.pointer {
+    cursor: pointer;
+}
+// Great headers styles
+.great-header {
+    font-weight: 600;
+    letter-spacing: rem(3.5);
+
+    @media screen and (max-width: 424px) {
+        letter-spacing: rem(1.5);
+    }
+}
+h1.great-header {
+    font-size: rem(68);
+    @media screen and (max-width: 424px) {
+        font-size: rem(52);
+    }
+}
+h2.great-header {
+    font-size: rem(52);
+    @media screen and (max-width: 424px) {
+        font-size: rem(38);
+    }
+}
+h3.great-header {
+    font-size: rem(38);
+    @media screen and (max-width: 424px) {
+        font-size: rem(32);
+    }
+}
+h4.great-header {
+    font-size: rem(32);
+    @media screen and (max-width: 424px) {
+        font-size: rem(28);
+    }
+}
+h5.great-header {
+    font-size: rem(28);
+    @media screen and (max-width: 424px) {
+        font-size: rem(24);
+    }
+}
+h6.great-header {
+    font-size: rem(24);
+    @media screen and (max-width: 424px) {
+        font-size: rem(20);
+    }
+}
+// List of paired items where second floats over first
+.items-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: rem(40);
+
+    &__item {
+        width: 100%;
+        aspect-ratio: 1/0.75;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    &__title {
+        display: block;
+        width: 53.75%;
+        font-size: rem(32);
+    }
+    &__first,
+    &__second {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        width: 65%;
+    }
+    &__first {
+        z-index: 1;
+        left: 0;
+        top: 0;
+        align-items: flex-start;
+        text-align: start;
+    }
+    &__second {
+        right: 0;
+        bottom: 0;
+        align-items: flex-end;
+        text-align: end;
+    }
+    &__image {
+        width: 100%;
+        img {
+            width: 100%;
+            aspect-ratio: 16/10;
+        }
+    }
+    &__second &__image {
+        z-index: 2;
+    }
+}
+// Form inputs styles
+.input-group {
+    position: relative;
+}
+.text-input {
+    display: inline-block;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    background-color: transparent;
+    outline: 2px solid #fff;
+
+    &-label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translate(10px, 10px);
+        transition: 0.25s;
+    }
+    &:focus + &-label,
+    &:invalid + &-label {
+        background-color: #000;
+        transform: translate(10px, -10px) scale(0.8);
+        color: #d1c5fc;
+        padding-inline: 5px;
+    }
+}
+.button-input {
+    display: inline-block;
+    background: none;
+    border: 2px $text solid;
+    transition: 0.25s;
+    font-size: rem(32);
+
+    &:hover,
+    &:focus {
+        border-color: adjust-hue($text, 45deg);
+    }
+}
+// Animate the size, outside
+.button-pulse:hover,
+.button-pulse:focus {
+    animation: pulse 1s;
+    box-shadow: 0 0 0 rem(24) transparent;
+}
+
+// ================= Keyframes =================
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 adjust-hue($text, 45deg);
+    }
+}

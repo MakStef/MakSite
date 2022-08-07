@@ -1,0 +1,34 @@
+{% load static %}
+<footer class="footer">
+    <div class="container">
+        <div class="footer-items row">
+            <div class="footer-items__left row">
+                <div class="footer-items__logo"><img src="{% static 'main/img/logo/logo.png' %}"></div>
+                <div class="footer-items__pillar"></div>
+                <div class="footer-items__copyrights">MakStef Ⓒ all rights served</div>
+            </div>
+            <div class="footer-items__right row">
+                <div class="footer-items__email"><a target="_blank" href="mailto:maksistef@gmail.com">maksistef@gmail.com</a></div>
+                    <ul class="footer-items__socials row">
+                        <li class="footer-items__social"><a target="_blank" href="https://t.me/iAmMason">
+                            <i class="fa-brands fa-telegram"></i>
+                        </a></li>
+                        <li class="footer-items__social"><a target="_blank" href="https://www.facebook.com/maxymstefaniv">
+                            <i class="fa-brands fa-facebook"></i>
+                        </a></li>
+                        <li class="footer-items__social"><a target="_blank" href="https://www.instagram.com/maxymstefaniv">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a></li>
+                        <li class="footer-items__social"><a target="_blank" href="https://twitter.com/MaksimStefaniv">
+                            <i class="fa-brands fa-twitter"></i>
+                        </a></li>
+                        <li class="footer-items__social"><a onclick="popUpShow(phonePopUp)">
+                            <i class="fa-solid fa-phone pointer"></i>
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="{% static 'main/js/popUp.js' %}"></script>
