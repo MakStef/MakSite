@@ -22,17 +22,12 @@
                             </a>
                         </div>
                     </div>
-                    <div class="welcome__right row">
-                        <div class="welcome__rate"><h2 class="great-header">Mood<br>rate</h2></div>
-                        <div class="welcome__face row">
-                            <h1 class="great-header row">
-                                <i class="fa-solid fa-smile"></i>
-                                <div class="welcome__arrow-container">
-                                    <span class="animate>
-                                        <i class="fa-solid fa-arrow-up hidden"></i>
-                                    </span>
-                                </div>
-                            </h1>
+                    <div class="welcome__right column">
+                        <h2 class="great-header">Mood Rate</h2>
+                        <div class="welcome__smile">
+                            <i class="fa-solid fa-arrow-down"></i>
+                            <i class="fa-solid fa-face-smile-beam"></i>
+                            <i class="fa-solid fa-arrow-up"></i>
                         </div>
                     </div>
                 </div>
@@ -133,7 +128,7 @@
                                 <li class="footer-items__social"><a target="_blank" href="https://twitter.com/MaksimStefaniv">
                                     <i class="fa-brands fa-twitter"></i>
                                 </a></li>
-                                <li class="footer-items__social"><a onclick="popUpShow(phonePopUp)">
+                                <li class="footer-items__social"><a href="tel:+380673502470">
                                     <i class="fa-solid fa-phone pointer"></i>
                                 </a></li>
                             </ul>
@@ -143,22 +138,6 @@
             </div>
         </footer>
     </div>
-    {% comment %} 
-    <!-- Phone number popup html -->
-    <div class="phone-popup">
-        <div class="phone-popup__background background"></div>
-        <div class="phone-popup__container container">
-            <div class="phone-popup__close" onclick="deleteItem('.phone-popup')"><span class="red"><i class="fa-solid fa-xmark"></i></span></div>
-            <div class="phone-popup__text text">
-                <span class="phone-popup__number">+380673502470</span>
-                <button class="phone-popup__clipboard" onclick="copyNum()">
-                    <i class="fa-solid fa-paste">Copy it! </i>
-                    <i class="hidden fa-solid fa-circle-check">Copied! </i>
-                </button>
-            </div>
-        </div>
-    </div> 
-    {% endcomment %}
 {% endblock %}
 {% block scripts %}
     {% comment %} <script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script> {% endcomment %}

@@ -49,19 +49,40 @@
         }
     }
 }
-@mixin adaptive-value($property, $startSize, $minSize, $type) {
-    $addSize: $startSize - $minSize;
-    // Only when smaller than container
-    @if $type ==1 {
+// Адаптивное свойство
+$maxWidth: 1920;
+$maxWidthContainer: 1170;
+@mixin adaptiv-value($property, $startSize, $minSize, $type) {
+    $addsize: $startSize - $minSize;
+    @if $type==1 {
+        //Только если меньше контейнера
         #{$property}: $startSize + px;
         @media (max-width: #{$maxWidthContainer + px}) {
             #{$property}: calc(
-                #{$minSize + px} + #{$addSize} *
+                #{$minSize + px} + #{$addsize} *
                     ((100vw - 320px) / #{$maxWidthContainer - 320})
             );
         }
+    } @else if $type==2 {
+        //Только если больше контейнера
+        #{ $property}: $startSize + px;
+        @media (min-width: #{ $maxWidthContainer + px}) {
+            #{$property}: calc(
+                #{$minSize + px} + #{$addsize} *
+                    ((100vw - 320px) / #{$maxWidth - 320})
+            );
+        }
+    } @else {
+        //Bcerga
+        #{$property}: calc(
+            #{$minSize +
+                px} +
+                #{$addsize} *
+                ((100vw - 320px) / #{$maxWidth - 320})
+        );
     }
 }
+
 // ================= Tags =================
 html,
 body {
@@ -218,6 +239,25 @@ h6.great-header {
     }
     &__second &__image {
         z-index: 2;
+    }
+
+    @media (max-width: 767px) {
+        gap: rem(16) !important;
+
+        &__item {
+            gap: 8px;
+        }
+        &__first,
+        &__second {
+            position: relative;
+            width: 100%;
+            text-align: center;
+        }
+        &__second {
+        }
+        &__title {
+            width: 100%;
+        }
     }
 }
 // Form inputs styles

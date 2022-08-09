@@ -29,8 +29,18 @@ chatSocket.onmessage = function(e) {
     messageElement.innerText = data.message;
     document.scrollY += 200;
     
-    (userId === loggedInUserId) ? messageElement.classList.add('message', 'sender') : messageElement.classList.add('message', 'receiver');
-    
+    // Did message was sent by this user or by another user
+    const whoSent = (userId === loggedInUserId) ? "sender" : "reciever";
+    (whoSent==="sender") ? messageElement.classList.add('message', 'sender') : messageElement.classList.add('message', 'receiver');
+    (chatLog.lastElementChild.classList.contains(whoSent)) ? (function () {
+        console.log("Prev message is from same sender");
+        chatLog.lastElementChild.classList.remove('last');
+        chatLog.lastElementChild.classList.add('middle');
+        messageElement.classList.add('last');
+    })() : (function () {
+            console.log("Prev message is from another sender");
+            messageElement.classList.add('first');
+    })()
     chatLog.appendChild(messageElement);
     
     if (document.querySelector('#emptyText')) {
@@ -42,15 +52,54 @@ function sendMessage () {
     const message = messageInputObj.value;
     // If message's lenght 0, then log about it, else send data
     if (message.length !== 0) {
-        console.log('Sending is successful');
         chatSocket.send(JSON.stringify({'message': message})); 
         clearTextInput(messageInputObj)
         setTimeout(()=>{window.scrollBy(0, 999999)}, 50)
         return true;
     } 
     else {
-        console.log('Sending cancelled, empty value');
         return false;
+    }
+}
+// For each message in chat decide is it first, middle or last item in row
+for (let chat of chatLog.children) {
+    if (chat.classList.contains("sender")) {
+        console.log('hey');
+        if (chat == chatLog.firstElementChild) {
+            console.log('first');
+            chat.classList.add("first")
+        }
+        else {
+            if (chat.previousElementSibling.classList.contains("sender")) {
+                if ((chat!=chatLog.lastElementChild)&&chat.nextElementSibling.classList.contains("sender")) {
+                    chat.classList.add("middle")
+                }
+                else {
+                    chat.classList.add("last")
+                }
+            }
+            else {
+                chat.classList.add("first")
+            }
+        }
+    }
+    else {
+        if (chat === chatLog.firstElementChild) {
+            chat.classList.add("first")
+        }
+        else {
+            if (chat.previousElementSibling.classList.contains("reciever")) {
+                if ((chat!=chatLog.lastElementChild)&&chat.nextElementSibling.classList.contains("reciever")) {
+                    chat.classList.add("middle")
+                }
+                else {
+                    chat.classList.add("last")
+                }
+            }
+            else {
+                chat.classList.add("first")
+            }
+        }
     }
 }
 document.getElementById("chat-message-submit").onclick = () => {
@@ -79,3 +128,4 @@ chatSocket.onclose = function(e) {
 };
 document.getElementById(messageInputObj.id).focus();
 document.getElementById(messageInputObj.id).onkeyup = (e)=>{(e.keyCode === 13)? document.querySelector('#chat-message-submit').click() : false}
+

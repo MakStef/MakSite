@@ -1,9 +1,8 @@
 import {newTextInput} from './inputs.js';
 
-let roomName = null;
 const roomNameInputObj = {
     'id' : "room-name-input",
-    'value' : roomName,
+    'value' : "",
 };
 
 document.getElementById('room-name-input').onkeyup = function(e) {
@@ -19,4 +18,4 @@ document.querySelector('#room-name-submit').onclick = (e) => {
 };
 
 newTextInput(roomNameInputObj);
-document.getElementById(roomNameInputObj.id).focus();
+document.querySelector(`#${roomNameInputObj.id}`).focus();

@@ -134,7 +134,17 @@ h6.great-header {
       aspect-ratio: 16/10; }
   .items-list__second .items-list__image {
     z-index: 2; }
-
+  @media (max-width: 767px) {
+    .items-list {
+      gap: 1rem !important; }
+      .items-list__item {
+        gap: 8px; }
+      .items-list__first, .items-list__second {
+        position: relative;
+        width: 100%;
+        text-align: center; }
+      .items-list__title {
+        width: 100%; } }
 .input-group {
   position: relative; }
 
@@ -183,17 +193,65 @@ h6.great-header {
   66% {
     transform: translateY(-4px); } }
 
-@keyframes arrow-fly_1 {
-  from {
-    transform: translate(0, 0) scale(1); }
-  to {
-    transform: translate(0, -100px) scale(0.7); } }
-
-@keyframes arrow-fly_2 {
+@keyframes smile-arrow_up {
   0% {
-    transform: translate(0, 100px) scale(0.7); }
+    transform: translate(0, 0) scale(0.6); }
+  33% {
+    transform: translate(0, 50%); }
+  50% {
+    transform: translate(0, 0) scale(0.6); }
+  66% {
+    transform: translate(0, -50%); }
   100% {
-    transform: translate(0, 0) scale(1); } }
+    transform: translate(0, 0) scale(0.6); } }
+
+@keyframes smile-arrow_down {
+  0% {
+    transform: translate(0, 0) scale(0.6); }
+  33% {
+    transform: translate(0, -50%); }
+  50% {
+    transform: translate(0, 0) scale(0.6); }
+  66% {
+    transform: translate(0, 50%); }
+  100% {
+    transform: translate(0, 0) scale(0.6); } }
+
+@keyframes smile-face {
+  0% {
+    filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.4)); }
+  30% {
+    filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.4));
+    transform: rotate(0deg); }
+  33% {
+    transform: rotate(30deg);
+    filter: drop-shadow(0px 0px 40px rgba(255, 255, 255, 0.6)); }
+  36% {
+    filter: drop-shadow(0px 0px 30px rgba(255, 255, 255, 0.4));
+    transform: rotate(-30deg); }
+  39% {
+    filter: drop-shadow(0px 0px 40px rgba(255, 255, 255, 0.6));
+    transform: rotate(30deg); }
+  42% {
+    filter: drop-shadow(0px 0px 20px rgba(255, 255, 255, 0.4));
+    transform: rotate(0deg); }
+  63% {
+    filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.4));
+    transform: rotate(0deg); }
+  66% {
+    filter: drop-shadow(0px 0px 40px rgba(255, 255, 255, 0.6));
+    transform: rotate(30deg); }
+  69% {
+    filter: drop-shadow(0px 0px 30px rgba(255, 255, 255, 0.4));
+    transform: rotate(-30deg); }
+  72% {
+    filter: drop-shadow(0px 0px 40px rgba(255, 255, 255, 0.6));
+    transform: rotate(30deg); }
+  75% {
+    filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.4));
+    transform: rotate(0deg); }
+  100% {
+    filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.4)); } }
 
 .welcome {
   padding: 3.75rem 0;
@@ -257,13 +315,24 @@ h6.great-header {
     flex: 1 1 50%;
     justify-content: center;
     align-items: flex-start;
-    gap: 1rem; }
-  .welcome__face {
+    gap: 2.25rem;
     text-align: center; }
-    .welcome__face .great-header {
-      font-size: 6rem;
-      align-items: center;
-      gap: 4px; }
+  .welcome__smile {
+    width: 100%;
+    text-align: center;
+    font-size: 2.875rem; }
+    .welcome__smile .fa-face-smile-beam {
+      font-size: 1.6em;
+      animation: smile-face 6s ease-in-out infinite; }
+    .welcome__smile .fa-arrow-up {
+      color: #00a735;
+      animation: smile-arrow_up 4s ease infinite; }
+    .welcome__smile .fa-arrow-down {
+      color: #ca031b;
+      animation: smile-arrow_down 4s linear infinite; }
+    @media (max-width: 767px) {
+      .welcome__smile {
+        text-align: start; } }
   @media (max-width: 768px) {
     .welcome {
       flex-direction: column; } }
@@ -341,6 +410,10 @@ h6.great-header {
   @media screen and (max-width: 767px) {
     .technologies-list {
       flex-direction: column; } }
+html,
+body {
+  font-size: calc( 12px + 4 * ((100vw - 320px) / 1600)); }
+
 .black-area,
 .white-area {
   padding: 2.5rem 0;
@@ -358,7 +431,7 @@ h6.great-header {
   color: #fff; }
 
 .content-container {
-  width: 80%;
+  width: calc( 320px + 1120 * ((100vw - 320px) / 1600));
   flex: 1 1 auto; }
 
 .navigation {

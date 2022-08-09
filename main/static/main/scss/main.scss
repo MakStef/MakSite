@@ -6,6 +6,10 @@
 @import "multipurpose.scss", "nav.scss", "index.scss";
 
 // ================= Styles =================
+html,
+body {
+    @include adaptiv-value(font-size, 16, 12, 3);
+}
 .black-area,
 .white-area {
     padding: rem(40) 0;
@@ -23,7 +27,7 @@
     color: $text;
 }
 .content-container {
-    width: 80%;
+    @include adaptiv-value(width, 1440, 320, 3);
     flex: 1 1 auto;
 }
 

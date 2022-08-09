@@ -2,7 +2,7 @@ function newTextInput(inputObj) {
     document.getElementById(inputObj.id).addEventListener('focusin', () => {
         document.getElementById(inputObj.id).classList.add('active');
     })
-    document.getElementById(inputObj.id).addEventListener('change', () => {
+    document.getElementById(inputObj.id).addEventListener('keydown', (event) => {
         document.getElementById(inputObj.id).classList.add('active');
         inputObj.value = document.getElementById(inputObj.id).value;
     })

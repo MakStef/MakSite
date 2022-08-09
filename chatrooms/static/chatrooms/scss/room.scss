@@ -101,13 +101,25 @@
     padding: 0 0 rem(58) 0;
     width: 100%;
     flex: 1 1 auto;
-    gap: rem(12);
 }
 .message {
+    font-size: 1.15em;
+    line-height: 125%;
     display: inline-block;
     width: 47.5%;
+    padding: rem(8) rem(16);
     border: solid 2px #fff;
-    padding: 8px;
+}
+.first {
+    margin: rem(8) 0 0 0;
+    border-bottom: none;
+}
+.middle {
+    border-top: none;
+    border-bottom: none;
+}
+.last {
+    border-top: none;
 }
 .sender {
     align-self: flex-end;
