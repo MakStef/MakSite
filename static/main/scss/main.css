@@ -314,9 +314,12 @@ h6.great-header {
     position: relative;
     flex: 1 1 50%;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     gap: 2.25rem;
     text-align: center; }
+    @media (max-width: 426px) {
+      .welcome__right {
+        align-items: flex-start; } }
   .welcome__smile {
     width: 100%;
     text-align: center;

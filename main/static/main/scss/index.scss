@@ -160,9 +160,12 @@
         position: relative;
         flex: 1 1 50%;
         justify-content: center;
-        align-items: flex-start;
+        align-items: center;
         gap: rem(36);
         text-align: center;
+        @media (max-width: 426px) {
+            align-items: flex-start;
+        }
     }
     &__smile {
         width: 100%;
