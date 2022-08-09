@@ -425,13 +425,16 @@ body {
 .white-area {
   background-color: #fff;
   color: #000; }
+  .white-area .content-container {
+    width: calc( 320px + 1120 * ((100vw - 320px) / 1600));
+    flex: 1 1 auto; }
 
 .black-area {
   background-color: #000;
   color: #fff; }
 
 .content-container {
-  width: calc( 320px + 1120 * ((100vw - 320px) / 1600));
+  width: calc( 300px + 1140 * ((100vw - 320px) / 1600));
   flex: 1 1 auto; }
 
 .navigation {

@@ -21,13 +21,18 @@ body {
 .white-area {
     background-color: $text;
     color: $bgc;
+
+    .content-container {
+        @include adaptiv-value(width, 1440, 320, 3);
+        flex: 1 1 auto;
+    }
 }
 .black-area {
     background-color: $bgc;
     color: $text;
 }
 .content-container {
-    @include adaptiv-value(width, 1440, 320, 3);
+    @include adaptiv-value(width, 1440, 300, 3);
     flex: 1 1 auto;
 }
 
