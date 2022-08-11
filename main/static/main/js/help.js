@@ -10,6 +10,12 @@ worksContainer.classList.add("works-container");
 
 const worksTable = document.createElement('div');
 worksTable.classList.add("works-table");
+let worksDay = document.createElement("h3"), worksTime = document.createElement("h3");
+worksDay.classList.add("works-day", "great-header");
+worksTime.classList.add("works-time", "great-header");
+worksDay.innerText = "Day";
+worksTime.innerText = "Time";
+worksTable.append(worksDay, worksTime);
 for (const [day, time] of Object.entries(schedule)) {
     let worksDay = document.createElement("div"), worksTime = document.createElement("div");
     worksDay.classList.add("works-day");

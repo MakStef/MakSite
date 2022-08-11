@@ -180,7 +180,7 @@ h6.great-header {
 
 .popup {
   display: flex;
-  flex-direction: column wrap;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   position: fixed;
@@ -191,31 +191,51 @@ h6.great-header {
   z-index: 1001;
   background-color: rgba(0, 0, 0, 0.8); }
   .popup__container {
-    position: relative;
     display: flex;
-    flex-direction: column wrap;
-    align-items: center;
-    justify-content: center;
-    width: 80%;
-    aspect-ratio: 1/1.5;
-    background-color: #fff; }
-  .popup__close-button {
+    flex-direction: column;
     position: relative;
-    align-self: flex-end;
-    justify-self: flex-start;
+    width: 80%;
+    height: 90%;
+    border-radius: 16px;
+    overflow-y: scroll;
+    background-color: #fff;
+    animation: popup-appear 0.2s ease-in forwards; }
+  .popup__close-button {
+    flex: 0 0 auto;
+    background-color: transparent;
+    position: relative;
+    margin: 16px 16px auto auto;
     display: block;
-    width: 24px;
+    width: 2.25rem;
     aspect-ratio: 1; }
     .popup__close-button::before, .popup__close-button::after {
       content: "";
-      width: 100%;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 2.25rem;
       height: 2px;
       border-radius: 4px;
       background-color: #000; }
+    .popup__close-button::before {
+      transform: rotate(45deg); }
+    .popup__close-button::after {
+      transform: rotate(-45deg); }
+  .popup__content-container {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    align-items: center; }
 
 @keyframes pulse {
   0% {
     box-shadow: 0 0 0 0 white; } }
+
+@keyframes popup-appear {
+  from {
+    transform: scale(0); }
+  to {
+    transform: scale(1); } }
 
 html,
 body {

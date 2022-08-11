@@ -79,15 +79,23 @@
 
 .works {
     &-container {
-        margin: auto;
-        width: clamp(80%, 280px);
+        width: fit-content;
     }
     &-table {
+        text-align: center;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: 1fr;
-        grid-column-gap: 18px;
-        grid-row-gap: 18px;
+        grid-row-gap: 24px;
+        @include adaptiv-value(grid-column-gap, 48, 18, 3);
         grid-auto-rows: 1fr;
+        @include adaptiv-value(font-size, 28, 18, 3);
+    }
+    &-day,
+    &-time {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 }

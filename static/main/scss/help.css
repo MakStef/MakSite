@@ -191,7 +191,8 @@ h6.great-header {
   z-index: 1001;
   background-color: rgba(0, 0, 0, 0.8); }
   .popup__container {
-    display: block;
+    display: flex;
+    flex-direction: column;
     position: relative;
     width: 80%;
     height: 90%;
@@ -200,9 +201,10 @@ h6.great-header {
     background-color: #fff;
     animation: popup-appear 0.2s ease-in forwards; }
   .popup__close-button {
+    flex: 0 0 auto;
     background-color: transparent;
     position: relative;
-    margin: 8px 8px auto auto;
+    margin: 16px 16px auto auto;
     display: block;
     width: 2.25rem;
     aspect-ratio: 1; }
@@ -221,6 +223,7 @@ h6.great-header {
       transform: rotate(-45deg); }
   .popup__content-container {
     display: flex;
+    flex: 1 1 auto;
     flex-direction: column;
     align-items: center; }
 
@@ -591,15 +594,22 @@ body {
       transform: translateY(0px) rotate(-45deg); }
 
 .works-container {
-  margin: auto;
-  width: clamp(80%, 280px); }
+  width: fit-content; }
 
 .works-table {
+  text-align: center;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: 1fr;
-  grid-column-gap: 18px;
-  grid-row-gap: 18px;
-  grid-auto-rows: 1fr; }
+  grid-row-gap: 24px;
+  grid-column-gap: calc( 18px + 30 * ((100vw - 320px) / 1600));
+  grid-auto-rows: 1fr;
+  font-size: calc( 18px + 10 * ((100vw - 320px) / 1600)); }
+
+.works-day, .works-time {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
 
 /*# sourceMappingURL=help.css.map */
