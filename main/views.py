@@ -30,6 +30,10 @@ class IndexView(TemplateView, ExtraContextMixin):
     template_name = 'main/index.html'
     site_description = "Maksym Stefaniv is freelance python django web developer, can create responsive layouts, optimize SEO, do some design."
     site_keywords = """
+                maksite,
+                makstef,
+                maksym,
+                stefaniv,
                 web design, 
                 web development, 
                 free lance web dev, 
@@ -41,4 +45,24 @@ class IndexView(TemplateView, ExtraContextMixin):
     """
     extra_context = {
         'portfolios': Portfolio.objects.all(),
+        "site_description": site_description,
+        "site_keywords": site_keywords,
+    }
+
+
+class HelpView(TemplateView, ExtraContextMixin):
+    template_name = 'main/help.html'
+    site_description = "Maksym Stefaniv's help page that provides some more information."
+    site_keywords = """
+        maksite help,
+        maksym stefaniv help,
+        help page,
+        maksite help,
+        makstef help,
+    """
+
+    extra_context = {
+        'portfolios': Portfolio.objects.all(),
+        "site_description": site_description,
+        "site_keywords": site_keywords,
     }

@@ -1,5 +1,9 @@
 {% extends "chatrooms/base.html" %}
+{% load sass_tags %}
 {% load static %}
+{% block head %}
+    <link href="{% sass_src 'chatrooms/scss/room.scss' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
 {% block title %}{{room_name|capfirst}} Chatroom{% endblock %}
 {% block body %}
     <div class="wrapper column">

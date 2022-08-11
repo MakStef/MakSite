@@ -1,5 +1,10 @@
-let roomName;
-document.getElementById('room-name-input').focus();
+import {newTextInput} from './inputs.js';
+
+const roomNameInputObj = {
+    'id' : "room-name-input",
+    'value' : "",
+};
+
 document.getElementById('room-name-input').onkeyup = function(e) {
     if (e.keyCode === 13) {  // enter, return
         document.querySelector('#room-name-submit').click();
@@ -7,14 +12,10 @@ document.getElementById('room-name-input').onkeyup = function(e) {
 };
 
 document.querySelector('#room-name-submit').onclick = (e) => {
-    window.location.pathname = '/chat/' + roomName + '/';
+    if ((roomName!==null)&&(roomName!=="")) {
+        window.location.pathname = `/chat/${roomName}/`;
+    }
 };
 
-document.getElementById('room-name-input').addEventListener('change', () => {
-    if (document.getElementById('room-name-input').value === '') {
-        document.getElementById('room-name-input').setCustomValidity('Invalid field.');
-    } 
-    else {
-        roomName = document.getElementById('room-name-input').value;
-        document.getElementById('room-name-input').value = '';
-    }})
+newTextInput(roomNameInputObj);
+document.querySelector(`#${roomNameInputObj.id}`).focus();

@@ -2,10 +2,9 @@
 @import "../../../../main/static/main/scss/vars.scss";
 
 // ================= Import styles =================
-@import "../css/null.css";
 @import "../../../../main/static/main/scss/multipurpose.scss",
-    "../../../../main/static/main/scss/nav.scss",
-    "../../../../main/static/main/scss/index.scss", "index.scss";
+    "../../../../main/static/main/scss/mixins.scss",
+    "../../../../main/static/main/scss/main.scss";
 
 // ================= Styles =================
 // Navigation styles
@@ -97,40 +96,6 @@
                 align-items: center;
                 gap: rem(24);
             }
-        }
-    }
-}
-.phone-popup {
-    @include pop-up($bgc: #fff);
-    &__container {
-        position: relative;
-        padding: 5% 0;
-    }
-    &__close {
-        font-size: rem(32);
-        cursor: pointer;
-        position: absolute;
-        right: rem(8);
-        top: rem(8);
-    }
-    &__text {
-        border: 1px #000 solid;
-        padding: rem(8);
-        background-color: #fff;
-    }
-    &__clipboard {
-        font-size: rem(24);
-        position: relative;
-        padding: rem(8);
-        border-radius: 4px;
-        background-color: #007800;
-
-        .fa-solid {
-            transition: 150ms;
-        }
-        .hidden {
-            display: none;
-            transform: scale(0);
         }
     }
 }

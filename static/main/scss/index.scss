@@ -1,5 +1,5 @@
 // ================= Import styles =================
-@import "vars";
+@import "./main.scss";
 
 // ================= Import fonts =================
 
@@ -12,7 +12,88 @@
         transform: translateY(-4px);
     }
 }
-
+@keyframes smile-arrow_up {
+    0% {
+        transform: translate(0, 0) scale(0.6);
+    }
+    33% {
+        transform: translate(0, 50%);
+    }
+    50% {
+        transform: translate(0, 0) scale(0.6);
+    }
+    66% {
+        transform: translate(0, -50%);
+    }
+    100% {
+        transform: translate(0, 0) scale(0.6);
+    }
+}
+@keyframes smile-arrow_down {
+    0% {
+        transform: translate(0, 0) scale(0.6);
+    }
+    33% {
+        transform: translate(0, -50%);
+    }
+    50% {
+        transform: translate(0, 0) scale(0.6);
+    }
+    66% {
+        transform: translate(0, 50%);
+    }
+    100% {
+        transform: translate(0, 0) scale(0.6);
+    }
+}
+@keyframes smile-face {
+    0% {
+        filter: drop-shadow(0px 0px 10px rgba(#fff, 0.4));
+    }
+    30% {
+        filter: drop-shadow(0px 0px 10px rgba(#fff, 0.4));
+        transform: rotate(0deg);
+    }
+    33% {
+        transform: rotate(30deg);
+        filter: drop-shadow(0px 0px 40px rgba(#fff, 0.6));
+    }
+    36% {
+        filter: drop-shadow(0px 0px 30px rgba(#fff, 0.4));
+        transform: rotate(-30deg);
+    }
+    39% {
+        filter: drop-shadow(0px 0px 40px rgba(#fff, 0.6));
+        transform: rotate(30deg);
+    }
+    42% {
+        filter: drop-shadow(0px 0px 20px rgba(#fff, 0.4));
+        transform: rotate(0deg);
+    }
+    63% {
+        filter: drop-shadow(0px 0px 10px rgba(#fff, 0.4));
+        transform: rotate(0deg);
+    }
+    66% {
+        filter: drop-shadow(0px 0px 40px rgba(#fff, 0.6));
+        transform: rotate(30deg);
+    }
+    69% {
+        filter: drop-shadow(0px 0px 30px rgba(#fff, 0.4));
+        transform: rotate(-30deg);
+    }
+    72% {
+        filter: drop-shadow(0px 0px 40px rgba(#fff, 0.6));
+        transform: rotate(30deg);
+    }
+    75% {
+        filter: drop-shadow(0px 0px 10px rgba(#fff, 0.4));
+        transform: rotate(0deg);
+    }
+    100% {
+        filter: drop-shadow(0px 0px 10px rgba(#fff, 0.4));
+    }
+}
 // ================= Styles =================
 // Welcome block
 .welcome {
@@ -78,24 +159,33 @@
     &__right {
         position: relative;
         flex: 1 1 50%;
-    }
-    &__face {
+        justify-content: center;
+        align-items: center;
+        gap: rem(36);
         text-align: center;
+        @media (max-width: 426px) {
+            align-items: flex-start;
+        }
+    }
+    &__smile {
+        width: 100%;
+        text-align: center;
+        font-size: rem(46);
 
-        img {
-            width: clamp(120px, 100%, 320px);
+        .fa-face-smile-beam {
+            font-size: 1.6em;
+            animation: smile-face 6s ease-in-out infinite;
         }
-        .common {
-            opacity: 0.7;
-            display: block;
+        .fa-arrow-up {
+            color: rgb(0, 167, 53);
+            animation: smile-arrow_up 4s ease infinite;
         }
-        .smile {
-            opacity: 0.71;
-            display: block;
+        .fa-arrow-down {
+            color: rgb(202, 3, 27);
+            animation: smile-arrow_down 4s linear infinite;
         }
-        .common.hidden,
-        .smile.hidden {
-            display: none;
+        @media (max-width: 767px) {
+            text-align: start;
         }
     }
     // &__fly-thing {

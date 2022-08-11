@@ -1,0 +1,35 @@
+{% extends 'main/base.html' %} 
+{% load static %} 
+{% load sass_tags %} 
+{% block title %}Homepage{%endblock %} 
+{% block head %}
+    <meta name="description" content="{{site_description}}" />
+    <meta name="keywords" content="{{site_keywords}}" />
+    <link
+        href="{% sass_src 'main/scss/help.scss' %}"
+        rel="stylesheet"
+        type="text/css"
+    />
+{% endblock %} 
+{% block body %}
+<div class="wrapper column">
+    {% include 'main/nav.html' %}
+    <div class="content-container column">
+        <div class="help column">
+            <div class="help__title"><h1 class="great-header">Do you need help?</h1></div>
+            <div class="help__body column">
+                <div class="help__items">
+                    <a href="{% url 'account_reset_password' %}" class="help__item"><span class="center">Reset password</span></a>
+                    <a href="https://t.me/iAmMason" class="help__item"><span class="center">Fatal bug</span></a>
+                    <a href="https://twitter.com/MaksimStefaniv" class="help__item"><span class="center">Maksym Stefaniv is</span></a>
+                    <a class="help__item help__item_works-at pointer"><span class="center">He works at</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include "main/footer.html" %}
+</div>
+{% endblock %}
+{% block scripts %}
+    <script src="{% static 'main/js/help.js' %}" type="module"></script>
+{% endblock %}

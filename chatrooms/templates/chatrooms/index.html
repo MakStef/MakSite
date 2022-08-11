@@ -1,9 +1,11 @@
 {% extends 'chatrooms/base.html' %} 
+{% load sass_tags %}
 {% load static %}
 {% block title %}Chat Select Room{%endblock %} 
 {% block head %}
     <meta name="description" content="{{site_description}}" />
     <meta name="keywords" content="{{site_keywords}}" />
+    <link href="{% sass_src 'chatrooms/scss/index.scss' %}" rel="stylesheet" type="text/css" />
 {% endblock %} 
 {% block body %}
     <div class="wrapper">

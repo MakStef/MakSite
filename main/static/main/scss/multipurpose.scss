@@ -4,91 +4,7 @@
     @return $remValue;
 }
 
-// ================= Mixins =================
-@mixin underscore($h: 1px, $w: 100%, $bgc: #fff, $bgi: none) {
-    position: relative;
-
-    &::after {
-        width: $w;
-        height: $h;
-        position: absolute;
-        bottom: -4px;
-        left: 0;
-        content: "";
-        background-color: $bgc;
-        background-image: $bgi;
-    }
-}
-@mixin link(
-    $bgc: #fff,
-    $clr: #000,
-    $bgi: none,
-    $icon-sz: 2.5rem,
-    $text-sz: 1.8rem,
-    $gap: 1rem,
-    $p: 8px
-) {
-    a {
-        color: $clr;
-        display: inline-flex;
-        position: relative;
-        flex-direction: row;
-        align-items: center;
-        padding: $p;
-        border-radius: 40px;
-        background-image: $bgi;
-        background-color: $bgc;
-        gap: $gap;
-
-        .icon {
-            text-align: center;
-            font-size: $icon-sz;
-        }
-        .text {
-            font-size: $text-sz;
-        }
-    }
-}
-// Адаптивное свойство
-$maxWidth: 1920;
-$maxWidthContainer: 1170;
-@mixin adaptiv-value($property, $startSize, $minSize, $type) {
-    $addsize: $startSize - $minSize;
-    @if $type==1 {
-        //Только если меньше контейнера
-        #{$property}: $startSize + px;
-        @media (max-width: #{$maxWidthContainer + px}) {
-            #{$property}: calc(
-                #{$minSize + px} + #{$addsize} *
-                    ((100vw - 320px) / #{$maxWidthContainer - 320})
-            );
-        }
-    } @else if $type==2 {
-        //Только если больше контейнера
-        #{ $property}: $startSize + px;
-        @media (min-width: #{ $maxWidthContainer + px}) {
-            #{$property}: calc(
-                #{$minSize + px} + #{$addsize} *
-                    ((100vw - 320px) / #{$maxWidth - 320})
-            );
-        }
-    } @else {
-        //Bcerga
-        #{$property}: calc(
-            #{$minSize +
-                px} +
-                #{$addsize} *
-                ((100vw - 320px) / #{$maxWidth - 320})
-        );
-    }
-}
-
 // ================= Tags =================
-html,
-body {
-    font-family: $font-fam;
-}
-
 h1,
 h2,
 h3,
@@ -306,10 +222,72 @@ h6.great-header {
     animation: pulse 1s;
     box-shadow: 0 0 0 rem(24) transparent;
 }
+// PopUp
+.popup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 1001;
+    background-color: rgba(#000, 0.8);
+    &__container {
+        display: block;
+        position: relative;
+        width: 80%;
+        height: 90%;
+        border-radius: 16px;
+        overflow-y: scroll;
+        background-color: #fff;
+        animation: popup-appear 0.2s ease-in forwards;
+    }
+    &__close-button {
+        background-color: transparent;
+        position: relative;
+        margin: 8px 8px auto auto;
+        display: block;
+        width: rem(36);
+        aspect-ratio: 1;
 
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: rem(36);
+            height: 2px;
+            border-radius: 4px;
+            background-color: #000;
+        }
+        &::before {
+            transform: rotate(45deg);
+        }
+        &::after {
+            transform: rotate(-45deg);
+        }
+    }
+    &__content-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
 // ================= Keyframes =================
 @keyframes pulse {
     0% {
         box-shadow: 0 0 0 0 adjust-hue($text, 45deg);
+    }
+}
+@keyframes popup-appear {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
     }
 }

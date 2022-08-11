@@ -2,10 +2,9 @@
 @import "../../../../main/static/main/scss/vars.scss";
 
 // ================= Import styles =================
-@import "../css/null.css";
 @import "../../../../main/static/main/scss/multipurpose.scss",
-    "../../../../main/static/main/scss/nav.scss",
-    "../../../../main/static/main/scss/index.scss", "index.scss", "room.scss";
+    "../../../../main/static/main/scss/mixins.scss",
+    "../../../../main/static/main/scss/main.scss";
 
 // ================= Styles =================
 // Navigation styles
