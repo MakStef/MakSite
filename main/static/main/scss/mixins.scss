@@ -268,12 +268,13 @@ $maxWidthContainer: 1170;
             }
         }
         &__socials {
+            padding: 8px 0 0 0;
             justify-content: center;
-            gap: rem(24);
+            gap: rem(32);
         }
         &__social {
             transition: 225ms ease-out;
-            @include adaptiv-value(font-size, 32, 18, 3);
+            @include adaptiv-value(font-size, 32, 24, 3);
             &:hover {
                 transform: scale(1.1);
                 filter: opacity(0.75);

@@ -11,14 +11,26 @@ class Chat(models.Model):
     room = models.ForeignKey('ChatRoom', on_delete=models.CASCADE)
 
     def get_previous_user(self):
+        """Returns the previous chat user"""
         objects = list(Chat.objects.all())
 
-        if objects.index(self) != 0:
+        if objects[0] != self:
             previous = objects[objects.index(self)-1].user
         else:
             previous = None
-        print(previos)
+
         return previous
+
+    def get_next_user(self):
+        """ Get the next chat user """
+        objects = list(Chat.objects.all())
+
+        if objects[-1] != self:
+            next = objects[objects.index(self)+1].user
+        else:
+            next = None
+
+        return next
 
 
 class ChatRoom(models.Model):

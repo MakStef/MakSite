@@ -195,7 +195,6 @@ h6.great-header {
     flex-direction: column;
     position: relative;
     width: 80%;
-    height: 90%;
     border-radius: 16px;
     overflow-y: scroll;
     background-color: #fff;
@@ -223,6 +222,7 @@ h6.great-header {
       transform: rotate(-45deg); }
   .popup__content-container {
     display: flex;
+    padding: 32px 0;
     flex: 1 1 auto;
     flex-direction: column;
     align-items: center; }
@@ -419,11 +419,12 @@ body {
       .footer-items__email:hover {
         transform: scale(1.2); }
     .footer-items__socials {
+      padding: 8px 0 0 0;
       justify-content: center;
-      gap: 1.5rem; }
+      gap: 2rem; }
     .footer-items__social {
       transition: 225ms ease-out;
-      font-size: calc( 18px + 14 * ((100vw - 320px) / 1600)); }
+      font-size: calc( 24px + 8 * ((100vw - 320px) / 1600)); }
       .footer-items__social:hover {
         transform: scale(1.1);
         filter: opacity(0.75); }
@@ -600,13 +601,17 @@ body {
     padding: 2.25rem 0 0 0;
     text-align: center;
     align-items: center; }
-  .portfolio__loadmore {
+  .portfolio__loadmore, .portfolio__reset {
     position: relative;
     font-size: 2rem;
     padding: 0.5rem 1.5rem; }
-    .portfolio__loadmore span.animate {
+    .portfolio__loadmore span.animate, .portfolio__reset span.animate {
       display: inline-block;
       animation: down-and-up 1s infinite linear; }
+  .portfolio__reset {
+    display: none; }
+    .portfolio__reset.active {
+      display: inline-block; }
 
 .help-area {
   width: 100%;

@@ -195,7 +195,6 @@ h6.great-header {
     flex-direction: column;
     position: relative;
     width: 80%;
-    height: 90%;
     border-radius: 16px;
     overflow-y: scroll;
     background-color: #fff;
@@ -223,6 +222,7 @@ h6.great-header {
       transform: rotate(-45deg); }
   .popup__content-container {
     display: flex;
+    padding: 32px 0;
     flex: 1 1 auto;
     flex-direction: column;
     align-items: center; }
@@ -419,11 +419,12 @@ body {
       .footer-items__email:hover {
         transform: scale(1.2); }
     .footer-items__socials {
+      padding: 8px 0 0 0;
       justify-content: center;
-      gap: 1.5rem; }
+      gap: 2rem; }
     .footer-items__social {
       transition: 225ms ease-out;
-      font-size: calc( 18px + 14 * ((100vw - 320px) / 1600)); }
+      font-size: calc( 24px + 8 * ((100vw - 320px) / 1600)); }
       .footer-items__social:hover {
         transform: scale(1.1);
         filter: opacity(0.75); }
@@ -602,7 +603,7 @@ body {
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: 1fr;
   grid-row-gap: 24px;
-  grid-column-gap: calc( 18px + 30 * ((100vw - 320px) / 1600));
+  grid-column-gap: calc( 18px + 130 * ((100vw - 320px) / 1600));
   grid-auto-rows: 1fr;
   font-size: calc( 18px + 10 * ((100vw - 320px) / 1600)); }
 

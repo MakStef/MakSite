@@ -1,12 +1,11 @@
-// ================= Import vars =================
-@import "../../../../main/static/main/scss/vars.scss";
-
 // ================= Import styles =================
-@import "../../../../main/static/main/scss/multipurpose.scss",
-    "../../../../main/static/main/scss/mixins.scss",
-    "../../../../main/static/main/scss/main.scss";
+@import "../../../../main/static/main/scss/main.scss";
 
 // ================= Styles =================
+html,
+body {
+    font-size: 16px;
+}
 // Navigation styles
 .navigation {
     @include navigation(
@@ -16,88 +15,7 @@
 }
 // Footer styles
 .footer {
-    background-color: $ftr-bgc;
-    color: $text;
-    width: 100%;
-    .container {
-        margin: 0 auto;
-        width: 90%;
-    }
-    &-items {
-        flex-wrap: wrap;
-        width: 100%;
-        justify-content: space-between;
-        padding: rem(38) 0;
-        gap: rem(80);
-
-        // Left side
-        &__left {
-            flex: 0 1 auto;
-            gap: rem(26);
-            align-items: center;
-        }
-        &__logo {
-            height: rem(56);
-            text-align: center;
-
-            img {
-                height: 100%;
-            }
-        }
-        &__pillar {
-            width: 2px;
-            height: rem(52);
-            background-color: $ftr-text;
-        }
-        &__copyrights {
-            text-transform: uppercase;
-            color: $ftr-text;
-        }
-        // Right side
-        &__right {
-            flex: 1 0 auto;
-            align-items: center;
-            justify-content: flex-end;
-            gap: 10%;
-            font-size: rem(20);
-        }
-        &__email {
-            transition: all 285ms linear;
-            @include underscore(
-                $h: 2px,
-                $bgi: linear-gradient(to right, #efb631, #f10000)
-            );
-            &:hover {
-                transform: scale(1.2);
-            }
-        }
-        &__socials {
-            font-size: 1.4em;
-            justify-content: center;
-            gap: rem(16);
-        }
-        &__social {
-            transition: 225ms ease-out;
-            &:hover {
-                transform: scale(1.1);
-                filter: opacity(0.75);
-            }
-        }
-    }
-    // Adaptive
-    @media screen and (max-width: 840px) {
-        .footer-items {
-            flex-direction: column;
-            align-items: center;
-            gap: rem(24);
-
-            &__right {
-                flex-direction: column;
-                align-items: center;
-                gap: rem(24);
-            }
-        }
-    }
+    @include footer(#111111, #ffffff, #686868);
 }
 // Content styles
 .wrapper {

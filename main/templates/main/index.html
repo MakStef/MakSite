@@ -66,7 +66,8 @@
                         {% endcomment %}
                     </ul>
                     <div class="portfolio__loadmore-container column">
-                        <button class="portfolio__loadmore button-input" onclick="visible+=4; getMore();"><span class="animate"><i class="fa-solid fa-angles-down"></i></span> Load more!</button>
+                        <button class="portfolio__reset button-input" onclick="portfolio.scrollIntoView({behavior: 'smooth'}); resetButton.classList.remove('active'); reset();"><span class="animate"><i class="fa-solid fa-angles-up"></i></span>  Hide it!</button>
+                        <button class="portfolio__loadmore button-input" onclick="visible+=4; getMore(); resetButton.classList.add('active');"><span class="animate"><i class="fa-solid fa-angles-down"></i></span> Load more!</button>
                     </div> 
                 </div>
             </div>

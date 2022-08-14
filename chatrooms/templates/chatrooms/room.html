@@ -13,28 +13,42 @@
                     <a class="button-input button-pulse leave__button-pulse" href="{% url 'chat:index' %}">Leave</a>
                 </div>
             </div>
-            <div id="chat-log" class="chat-log column">
+            <div id="chat-log" class="chat column">
                 {% for chat in chats.all %}
-                {% if chat.user.id == request.user.id %}
-                        {% if chat.get_previous_user == request.user.id %}
-                        <div class="message sender previous-is-sender">
-                                {{ chat.content }}
-                            </div>
-                        {% else %}
-                            <div class="message sender">
-                                {{ chat.content }}
+                    {% comment %} If user sent a message {% endcomment %}
+                    {% if chat.user_id == request.user.id %}
+                    {% comment %} If message first open container and messages {% endcomment %}
+                        {% if chat.user_id != chat.get_previous_user.id %}
+                            <div class="chat__container sender column">
+                                <div class="chat__author">{{chat.user.username}}</div>
+                                <div class="chat__messages">
+                        {% endif %}
+                                {% comment %} Message itself {% endcomment %}
+                                    <div class="chat__message">{{chat.content}}</div>
+                    {% comment %} If message last then close messages and container {% endcomment %}
+                        {% if chat.user_id != chat.get_next_user.id %}
+                                </div>
+                                <div class="chat__posted">{{chat.timestamp}}</div>
                             </div>
                         {% endif %}
+                    {% comment %} If somebody else sent a message {% endcomment %}
                     {% else %}
-                        {% if chat.get_previous_user == chat.user_id %}
-                            <div class="message sender previous-is-sender">
-                                {{ chat.content }}
+                    {% comment %} If message first open container and messages {% endcomment %}
+                        {% if chat.user_id != chat.get_previous_user.id %}
+                            <div class="chat__container reciever column">
+                                <div class="chat__author">{{chat.user.username}}</div>
+                                <div class="chat__messages">
+                        {% endif %}
+                                {% comment %} Message itself {% endcomment %}
+                                    <div class="chat__message">{{chat.content}}</div>
+                    {% comment %} If message last then close messages and container {% endcomment %}
+                        {% if chat.user_id != chat.get_next_user.id %}
+                                </div>
+                                <div class="chat__posted">{{chat.timestamp}}</div>
                             </div>
-                        {% else %}
-                            <div class="message receiver">
-                                {{ chat.content }}
-                            </div>
-                            {% endif %}
+                        {% endif %}
+                    {% comment %} If somebody else sent a message {% endcomment %}
+
                     {% endif %}
                 {% endfor %}
             </div>

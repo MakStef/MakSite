@@ -21,8 +21,8 @@ function createPortfolioItem(el, is_first) {
     return item.outerHTML;
 }
 // Set how many items will be displayed
-
 let visible = 2;
+
 // Fetching data returned from url "load-more"
 function getMore () {
     fetch(`/load-more/${visible}/`)
@@ -54,5 +54,14 @@ function getMore () {
             }
 )}
 
-getMore()
+// Reset the count of items
+function reset() {
+    visible = 2
+    const portfolioList = document.querySelector(".portfolio__list");
+    const firstPair = portfolioList.firstElementChild;
+    portfolioList.innerHTML = ""
+    portfolioList.append(firstPair)
+}
 
+
+getMore()

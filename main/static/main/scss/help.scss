@@ -87,7 +87,7 @@
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: 1fr;
         grid-row-gap: 24px;
-        @include adaptiv-value(grid-column-gap, 48, 18, 3);
+        @include adaptiv-value(grid-column-gap, 148, 18, 3);
         grid-auto-rows: 1fr;
         @include adaptiv-value(font-size, 28, 18, 3);
     }
