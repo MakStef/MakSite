@@ -222,10 +222,75 @@ h6.great-header {
     animation: pulse 1s;
     box-shadow: 0 0 0 rem(24) transparent;
 }
+// PopUp
+.popup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 1001;
+    background-color: rgba(#000, 0.8);
+    &__container {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        width: 80%;
+        border-radius: 16px;
+        overflow-y: scroll;
+        background-color: #fff;
+        animation: popup-appear 0.2s ease-in forwards;
+    }
+    &__close-button {
+        flex: 0 0 auto;
+        background-color: transparent;
+        position: relative;
+        margin: 16px 16px auto auto;
+        display: block;
+        width: rem(36);
+        aspect-ratio: 1;
 
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: rem(36);
+            height: 2px;
+            border-radius: 4px;
+            background-color: #000;
+        }
+        &::before {
+            transform: rotate(45deg);
+        }
+        &::after {
+            transform: rotate(-45deg);
+        }
+    }
+    &__content-container {
+        display: flex;
+        padding: 32px 0;
+        flex: 1 1 auto;
+        flex-direction: column;
+        align-items: center;
+    }
+}
 // ================= Keyframes =================
 @keyframes pulse {
     0% {
         box-shadow: 0 0 0 0 adjust-hue($text, 45deg);
+    }
+}
+@keyframes popup-appear {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
     }
 }

@@ -231,7 +231,8 @@
         text-align: center;
         align-items: center;
     }
-    &__loadmore {
+    &__loadmore,
+    &__reset {
         position: relative;
         font-size: rem(32);
         padding: rem(8) rem(24);
@@ -239,6 +240,15 @@
         span.animate {
             display: inline-block;
             animation: down-and-up 1s infinite linear;
+        }
+    }
+    &__loadmore {
+    }
+    &__reset {
+        display: none;
+
+        &.active {
+            display: inline-block;
         }
     }
 }

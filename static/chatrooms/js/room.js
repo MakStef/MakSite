@@ -1,4 +1,5 @@
 import {newTextInput, clearTextInput} from './inputs.js';
+import PopUp from 'http://localhost:8000/static/main/js/popUp.js';
 
 let messageValue = '';
 const messageInputObj = {
@@ -21,31 +22,52 @@ if (chatLog.childNodes.length <= 1) {
 
 const chatSocket = new WebSocket(`ws://${window.location.host}/ws/chat/${roomName}/`);
 
+function appendMessages (message, author, posted, sender) {
+    let chatLog = document.querySelector('#chat-log');
+    let messagesContainer = chatLog.lastElementChild;
+    let messageBlock = document.createElement("div");
+    messageBlock.classList.add("chat__message");
+    messageBlock.innerText = message;
+    if (messagesContainer.classList.contains(sender)) {
+        messagesContainer.children[1].append(messageBlock);
+        messagesContainer.lastElementChild.innerText = posted;
+    }
+    else {
+        messagesContainer = document.createElement('div');
+        messagesContainer.classList.add("chat__container", sender, 'column');
+        
+        let messages = document.createElement('div');
+        messages.classList.add("chat__messages");
+        messages.append(messageBlock);
+
+        let authorBlock = document.createElement("div"), postedBlock = document.createElement("div");
+        authorBlock.classList.add("chat__author");
+        postedBlock.classList.add("chat__posted");
+        authorBlock.innerText = author;
+        postedBlock.innerText = posted;
+
+        messagesContainer.append(authorBlock, messages, postedBlock);
+        chatLog.append(messagesContainer);
+    }
+}
+
 chatSocket.onmessage = function(e) {
     const data = JSON.parse(e.data);
-    const messageElement = document.createElement('div');
-    const userId = data['user_id'];
+    const userId = data['user_id'], author=data['author'], posted=data['posted'];
     const loggedInUserId = JSON.parse(document.getElementById('user_id').textContent);
-    messageElement.innerText = data.message;
     document.scrollY += 200;
-    
-    // Did message was sent by this user or by another user
+    let messageText = data.message
+
+    // Was message sent by this user or by another user
     const whoSent = (userId === loggedInUserId) ? "sender" : "reciever";
-    (whoSent==="sender") ? messageElement.classList.add('message', 'sender') : messageElement.classList.add('message', 'receiver');
-    (chatLog.lastElementChild.classList.contains(whoSent)) ? (function () {
-        console.log("Prev message is from same sender");
-        chatLog.lastElementChild.classList.remove('last');
-        chatLog.lastElementChild.classList.add('middle');
-        messageElement.classList.add('last');
-    })() : (function () {
-            console.log("Prev message is from another sender");
-            messageElement.classList.add('first');
-    })()
-    chatLog.appendChild(messageElement);
-    
+
+    appendMessages(messageText, author, posted, whoSent)
+
     if (document.querySelector('#emptyText')) {
         document.querySelector('#emptyText').remove();
     }
+
+
 };
 
 function sendMessage () {
@@ -59,47 +81,6 @@ function sendMessage () {
     } 
     else {
         return false;
-    }
-}
-// For each message in chat decide is it first, middle or last item in row
-for (let chat of chatLog.children) {
-    if (chat.classList.contains("sender")) {
-        console.log('hey');
-        if (chat == chatLog.firstElementChild) {
-            console.log('first');
-            chat.classList.add("first")
-        }
-        else {
-            if (chat.previousElementSibling.classList.contains("sender")) {
-                if ((chat!=chatLog.lastElementChild)&&chat.nextElementSibling.classList.contains("sender")) {
-                    chat.classList.add("middle")
-                }
-                else {
-                    chat.classList.add("last")
-                }
-            }
-            else {
-                chat.classList.add("first")
-            }
-        }
-    }
-    else {
-        if (chat === chatLog.firstElementChild) {
-            chat.classList.add("first")
-        }
-        else {
-            if (chat.previousElementSibling.classList.contains("reciever")) {
-                if ((chat!=chatLog.lastElementChild)&&chat.nextElementSibling.classList.contains("reciever")) {
-                    chat.classList.add("middle")
-                }
-                else {
-                    chat.classList.add("last")
-                }
-            }
-            else {
-                chat.classList.add("first")
-            }
-        }
     }
 }
 document.getElementById("chat-message-submit").onclick = () => {
@@ -129,3 +110,14 @@ chatSocket.onclose = function(e) {
 document.getElementById(messageInputObj.id).focus();
 document.getElementById(messageInputObj.id).onkeyup = (e)=>{(e.keyCode === 13)? document.querySelector('#chat-message-submit').click() : false}
 
+
+let deleteContentContainer = document.createElement('div'), deleteButton = document.createElement('a'), deleteText = document.createElement('h4');
+deleteContentContainer.classList.add('delete__container');
+deleteText.innerText = "Are you sure you want to delete this chat?";
+deleteButton.classList.add('delete__link', 'button-input', 'button-pulse', 'leave__button-pulse')
+deleteButton.href = document.querySelector("#deleteUrl").getAttribute('data-url');
+deleteButton.innerText = 'Yes'
+deleteContentContainer.append(deleteText, deleteButton);
+let deletePopUp = new PopUp("deleteChat", deleteContentContainer);
+
+document.querySelector(".leave__container_delete").onclick = ()=> deletePopUp.showPopUp();

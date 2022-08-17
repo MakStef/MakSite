@@ -1,4 +1,6 @@
 from django.db import models
+from django.conf import settings
+from django.shortcuts import get_object_or_404
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
@@ -12,9 +14,9 @@ class Chat(models.Model):
 
     def get_previous_user(self):
         """Returns the previous chat user"""
-        objects = list(Chat.objects.all())
+        objects = list(Chat.objects.filter(room=self.room))
 
-        if objects[0] != self:
+        if objects[0].id != self.id:
             previous = objects[objects.index(self)-1].user
         else:
             previous = None
@@ -23,9 +25,9 @@ class Chat(models.Model):
 
     def get_next_user(self):
         """ Get the next chat user """
-        objects = list(Chat.objects.all())
+        objects = list(Chat.objects.filter(room=self.room))
 
-        if objects[-1] != self:
+        if objects[-1].id != self.id:
             next = objects[objects.index(self)+1].user
         else:
             next = None
@@ -35,3 +37,4 @@ class Chat(models.Model):
 
 class ChatRoom(models.Model):
     name = models.CharField(max_length=255)
+    creator = models.ForeignKey(User, on_delete=models.DO_NOTHING, null=True,)

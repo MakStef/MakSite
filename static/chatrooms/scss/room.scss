@@ -75,24 +75,28 @@
 }
 // ================= Styles =================
 .content-container {
+    @include adaptiv-value(width, 1760, 300, 3);
     position: relative;
+    padding: 0 0 rem(14) 0;
 }
 .leave {
     position: sticky;
     top: 0;
     left: 0;
+    z-index: 2;
     width: 100%;
-    background-color: $bgc;
+    justify-content: space-between;
 
     &__container {
+        background-color: #000;
         position: relative;
-        padding: rem(8);
+        padding: rem(16) 0;
         align-items: flex-start;
     }
     &__button-pulse {
         border-radius: 4px;
-        padding: rem(8) rem(24);
-        font-size: rem(20);
+        padding: rem(8) rem(20);
+        font-size: rem(18);
 
         &:hover {
             color: #f00;
@@ -100,39 +104,82 @@
         }
     }
 }
-.chat-log {
-    padding: 0 0 rem(58) 0;
+.chat {
+    padding: 0 0 rem(46) 0;
     width: 100%;
     flex: 1 1 auto;
-}
-.message {
-    font-size: 1.15em;
-    line-height: 125%;
-    display: inline-block;
-    width: 47.5%;
-    padding: rem(8) rem(16);
-    border: solid 2px #fff;
-}
-.first {
-    margin: rem(8) 0 0 0;
-    border-bottom: none;
-}
-.middle {
-    border-top: none;
-    border-bottom: none;
-}
-.last {
-    border-top: none;
-}
-.sender {
-    align-self: flex-end;
-}
-.receiver {
-    align-self: flex-start;
+
+    &__container {
+        position: relative;
+        @include adaptiv-value(width, 800, 500, 2);
+        @include adaptiv-value(width, 600, 300, 1);
+        width: 70%;
+        padding: rem(8);
+        gap: 4px;
+
+        & > .chat__author {
+            display: inline-block;
+            background-color: #000;
+            position: absolute;
+            z-index: 1;
+            padding: 2px;
+            top: 0px;
+            font-size: rem(12);
+        }
+        & > .chat__posted {
+            @include adaptiv-value(width, 156, 66, 3);
+            font-size: 0.6em;
+        }
+
+        &.sender {
+            align-self: flex-end;
+            align-items: flex-end;
+
+            & > .chat__author {
+                right: 14px;
+            }
+            & > .chat__posted {
+                text-align: end;
+            }
+            & > .chat__messages {
+                border: 2px rgb(0, 90, 185) solid;
+                border-radius: 8px 8px 0% 8px / 8px 8px 0% 8px;
+            }
+        }
+        &.reciever {
+            align-self: flex-start;
+            align-items: flex-start;
+
+            & > .chat__messages {
+                border: 2px #afafaf solid;
+                border-radius: 8px 8px 8px 0% / 8px 8px 8px 0%;
+            }
+            & > .chat__author {
+                left: 14px;
+            }
+            & > .chat__posted {
+                text-align: start;
+            }
+        }
+    }
+
+    &__messages {
+        padding: rem(12) rem(24);
+        position: relative;
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-template-columns: 1fr;
+        grid-row-gap: 2px;
+        grid-auto-rows: 1fr;
+        text-align: start;
+    }
+    &__message {
+        line-height: 125%;
+        display: inline-block;
+    }
 }
 
 .inputs {
-    background-color: $bgc;
     position: fixed;
     width: 100%;
     left: 0;
@@ -143,6 +190,7 @@
 
     &__container {
         padding: rem(8);
+        background-color: $bgc;
         gap: rem(16);
     }
 }
@@ -195,5 +243,19 @@
         animation-duration: 130ms;
         animation-timing-function: linear;
         animation-iteration-count: infinite;
+    }
+}
+.delete {
+    &__container {
+        width: 80%;
+        @include adaptiv-value(width, 1400, 240, 1);
+        padding: 0 5%;
+        text-align: center;
+    }
+    &__link {
+        margin: rem(16);
+        font-size: rem(24);
+        @include adaptiv-value(width, 400, 140, 3);
+        border: 2px #000 solid;
     }
 }

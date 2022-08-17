@@ -18,12 +18,10 @@ export default class PopUp {
     }
 
     showPopUp() {
-        console.log("Shown");
         document.body.append(this.popUp);
     }
 
     hidePopUp() {
-        console.log("Hidden");
         document.body.removeChild(this.popUp);
     }
     get getId() {

@@ -8,10 +8,16 @@
 {% block body %}
     <div class="wrapper column">
         <div class="content-container column">
-            <div class="leave">
+            <div class="leave row">
                 <div class="leave__container">
                     <a class="button-input button-pulse leave__button-pulse" href="{% url 'chat:index' %}">Leave</a>
                 </div>
+                {% if admin %}
+                    <div class="leave__container">
+                        <input type="hidden" id="deleteUrl" data-url="{% url 'chat:delete_room' room_name %}">
+                        <a class="button-input button-pulse leave__button-pulse leave__button-pulse_delete pointer">Delete</a>
+                    </div>
+                {% endif %}
             </div>
             <div id="chat-log" class="chat column">
                 {% for chat in chats.all %}

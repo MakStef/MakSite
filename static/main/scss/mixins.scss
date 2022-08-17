@@ -45,7 +45,7 @@
 }
 // Adaptive value
 $maxWidth: 1920;
-$maxWidthContainer: 1170;
+$maxWidthContainer: 1720;
 @mixin adaptiv-value($property, $startSize, $minSize, $type) {
     $addsize: $startSize - $minSize;
     @if $type==1 {
@@ -67,7 +67,7 @@ $maxWidthContainer: 1170;
             );
         }
     } @else {
-        //Bcerga
+        // Always
         #{$property}: calc(
             #{$minSize +
                 px} +
@@ -76,6 +76,7 @@ $maxWidthContainer: 1170;
         );
     }
 }
+// Navigation in top-right corner
 @mixin navigation(
     $text-clr: #000,
     $menu-background: #fff,
@@ -209,6 +210,7 @@ $maxWidthContainer: 1170;
         }
     }
 }
+// Footer in the bottom of page
 @mixin footer($footerBackground, $linkColor, $rightsColor) {
     background-color: $footerBackground;
     color: $linkColor;
@@ -252,10 +254,10 @@ $maxWidthContainer: 1170;
             flex: 1 0 auto;
             align-items: center;
             justify-content: flex-end;
-            font-size: rem(18);
-            @include adaptiv-value(gap, 24, 16, 3);
+            @include adaptiv-value(gap, 36, 20, 3);
         }
         &__email {
+            @include adaptiv-value(font-size, 24, 16, 3);
             transition: all 285ms linear;
             @include underscore(
                 $h: 2px,
@@ -266,13 +268,13 @@ $maxWidthContainer: 1170;
             }
         }
         &__socials {
-            font-size: 1.4em;
+            padding: 8px 0 0 0;
             justify-content: center;
-            gap: rem(24);
+            gap: rem(32);
         }
         &__social {
             transition: 225ms ease-out;
-            @include adaptiv-value(font-size, 18, 22, 3);
+            @include adaptiv-value(font-size, 32, 24, 3);
             &:hover {
                 transform: scale(1.1);
                 filter: opacity(0.75);

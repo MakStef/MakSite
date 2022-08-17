@@ -86,8 +86,8 @@ img {
     background-color: #272727;
     @include adaptiv-value(width, 820, 320, 3);
     @include adaptiv-value(margin-top, 74, 32, 3);
+    @include adaptiv-value(border-radius, 16, 0, 0);
     padding: rem(78) rem(8);
-    border-radius: 16px;
     align-items: center;
     text-align: center;
     gap: rem(16);
@@ -177,7 +177,7 @@ input[type="checkbox"] {
 
         &::before,
         &::after {
-            background-color: #00f;
+            background-color: rgb(32, 134, 223);
         }
     }
 }

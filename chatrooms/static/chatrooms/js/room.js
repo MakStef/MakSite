@@ -1,4 +1,5 @@
 import {newTextInput, clearTextInput} from './inputs.js';
+import PopUp from 'http://localhost:8000/static/main/js/popUp.js';
 
 let messageValue = '';
 const messageInputObj = {
@@ -109,3 +110,15 @@ chatSocket.onclose = function(e) {
 document.getElementById(messageInputObj.id).focus();
 document.getElementById(messageInputObj.id).onkeyup = (e)=>{(e.keyCode === 13)? document.querySelector('#chat-message-submit').click() : false}
 
+if ( document.querySelector(".leave").contains( document.querySelector(".leave__button-pulse_delete")) ) {
+    let deleteContentContainer = document.createElement('div'), deleteButton = document.createElement('a'), deleteText = document.createElement('h4');
+    deleteContentContainer.classList.add('delete__container');
+    deleteText.innerText = "Are you sure you want to delete this chat?";
+    deleteButton.classList.add('delete__link', 'button-input', 'button-pulse', 'leave__button-pulse')
+    deleteButton.href = document.querySelector("#deleteUrl").getAttribute('data-url');
+    deleteButton.innerText = 'Yes'
+    deleteContentContainer.append(deleteText, deleteButton);
+    let deletePopUp = new PopUp("deleteChat", deleteContentContainer);
+
+    document.querySelector(".leave__button-pulse_delete").onclick = ()=> deletePopUp.showPopUp();
+}
