@@ -35,7 +35,9 @@ django-appconf==1.0.5
 django-colorfield==0.7.1
 django-compressor==4.0
 django-crispy-forms==1.14.0
+django-js-asset==2.0.0
 django-libsass==0.9
+django-mptt==0.13.4
 django-sass-processor==1.2.1
 duplicity==0.8.21
 fasteners==0.14.1
@@ -83,7 +85,7 @@ pycodestyle==2.8.0
 pycparser==2.21
 pycups==2.0.1
 PyGObject==3.42.0
-PyJWT==2.3.0
+PyJWT==2.4.0
 pymacaroons==0.13.0
 PyNaCl==1.5.0
 pyOpenSSL==22.0.0
@@ -96,6 +98,7 @@ python-apt==2.3.0+ubuntu2
 python-dateutil==2.8.1
 python-debian===0.1.43ubuntu1
 python3-openid==3.2.0
+pytube==12.1.0
 pytz==2022.1
 pyxdg==0.27
 PyYAML==5.4.1
