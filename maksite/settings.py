@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import sys
 
 # Build paths inside the project like this: Path.joinpath(BASE_DIR, 'subdir').
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -37,6 +38,8 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
+sys.modules['fontawesome_free'] = __import__('fontawesome-free')
+
 INSTALLED_APPS = [
     'channels',
     'chatrooms',
@@ -45,7 +48,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
 
-    'fontawesomefree',
+    'fontawesome_free',
     'crispy_forms',
 
     'django.contrib.admin',
