@@ -304,7 +304,8 @@ body {
       justify-content: center;
       position: relative;
       min-width: 60px;
-      height: 60px; }
+      height: 60px;
+      font-size: 2rem; }
     .navigation .userBx svg {
       width: 70%;
       height: 70%; }

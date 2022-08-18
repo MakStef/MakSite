@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
 
-    'fontawesomefree',
     'crispy_forms',
 
     'django.contrib.admin',

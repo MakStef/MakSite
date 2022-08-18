@@ -13,13 +13,8 @@ class Index(LoginRequiredMixin, View):
 
 class Room(LoginRequiredMixin, View):
     def get(self, request, room_name):
-        room = ChatRoom.objects.filter(name=room_name).first()
+        room = get_object_or_404(ChatRoom, name=room_name)
         chats = []
-        if room:
-            chats = Chat.objects.filter(room=room)
-        else:
-            room = ChatRoom(name=room_name, creator=request.user)
-            room.save()
 
         if room.creator:
             admin = (room.creator.id == request.user.id)
@@ -33,6 +28,18 @@ class Room(LoginRequiredMixin, View):
         }
 
         return render(request, 'chatrooms/room.html', context)
+
+
+class CreateRoom(LoginRequiredMixin, View):
+    def get(self, request, room_name):
+        if ChatRoom.objects.filter(name=room_name).count() == 0:
+            room = ChatRoom(
+                name=room_name,
+                creator=request.user
+            )
+            room.save()
+
+        return redirect('chat:room', room_name=room_name)
 
 
 class DeleteRoom(LoginRequiredMixin, View):
