@@ -27,13 +27,7 @@ django-js-asset==2.0.0
 django-libsass==0.9
 django-mptt==0.13.4
 django-sass-processor==1.2.1
-duplicity==0.8.21
-fasteners==0.14.1
-filelock==3.7.0
 fontawesomefree==6.1.1
-future==0.18.2
-h11==0.13.0
-hiredis==2.0.0
 httplib2==0.20.2
 hyperlink==21.0.0
 idna==3.3
