@@ -17,8 +17,6 @@ click==8.0.3
 colorama==0.4.4
 defusedxml==0.7.1
 distlib==0.3.4
-distro==1.7.0
-distro-info===1.1build1
 Django==4.0.3
 django-allauth==0.51.0
 django-appconf==1.0.5
