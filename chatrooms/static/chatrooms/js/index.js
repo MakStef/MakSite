@@ -14,7 +14,7 @@ document.getElementById('room-name-input').onkeyup = function(e) {
 document.querySelector('#room-name-submit').onclick = (e) => {
     let roomName = roomNameInputObj.value;
     if ((roomName!==null)&&(roomName!=="")) {
-        window.location.pathname = `/chat/${roomName}/`;
+        window.location.pathname = `/chat/create/${roomName}/`;
     }
 };
 
