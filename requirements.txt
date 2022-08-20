@@ -15,7 +15,6 @@ django-js-asset==2.0.0
 django-libsass==0.9
 django-mptt==0.13.4
 django-sass-processor==1.2.1
-fontawesomefree==6.1.1
 httplib2==0.20.2
 libsass==0.21.0
 oauthlib==3.2.0

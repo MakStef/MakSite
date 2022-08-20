@@ -31,4 +31,5 @@ if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,
                           document_root=settings.MEDIA_ROOT)
 else:
+    settings.STATIC_ROOT = "/var/www/maksite.com/static/"
     urlpatterns += staticfiles_urlpatterns()

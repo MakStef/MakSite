@@ -240,8 +240,9 @@ h6.great-header {
         flex-direction: column;
         position: relative;
         width: 80%;
+        height: fit-content;
         border-radius: 16px;
-        overflow-y: scroll;
+        overflow-x: hidden;
         background-color: #fff;
         animation: popup-appear 0.2s ease-in forwards;
     }

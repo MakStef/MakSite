@@ -1,0 +1,68 @@
+@import url(../css/null.css);
+html,
+body {
+  height: 100%;
+  width: 100%; }
+
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+.wrapper {
+  background-color: #000;
+  color: white;
+  min-height: 100%;
+  width: 100%; }
+
+.content-container {
+  font-family: Arial, sans-serif;
+  position: relative;
+  width: 80%;
+  height: 100%; }
+
+.error {
+  position: relative;
+  text-align: center; }
+  .error__container {
+    gap: 16px; }
+  .error__number {
+    color: #ff7300;
+    font-size: 4rem; }
+  .error__animation {
+    color: #ff7300;
+    width: 3.5rem;
+    aspect-ratio: 1;
+    position: relative;
+    animation: error-appearing 1.8s linear infinite; }
+  .error__circle {
+    position: absolute;
+    outline: dashed #ff7300 1px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 50%; }
+  .error__symbol {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0; }
+  .error__description {
+    font-size: 1.2rem; }
+
+@keyframes error-appearing {
+  0% {
+    font-size: 1.5rem;
+    opacity: 0.35; }
+  50% {
+    font-size: 2.5rem;
+    opacity: 1; }
+  100% {
+    font-size: 1.5rem;
+    opacity: 0.35; } }
+
+/*# sourceMappingURL=errors.css.map */

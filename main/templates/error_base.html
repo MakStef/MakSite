@@ -1,0 +1,43 @@
+{% load static %}
+{% load sass_tags %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <link
+    href="{% sass_src 'main/scss/errors.scss' %}"
+    rel="stylesheet"
+    type="text/css"
+    />
+    <link
+        rel="icon"
+        type="image/x-icon"
+        href="{% static 'main/img/logo/favicon.ico' %}"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Error {% block title %}{% endblock %} | MakSite</title>
+</head>
+<body>
+    <div class="wrapper center">
+        <div class="content-container center">
+            <div class="error">
+                <div class="error__container center">
+                    <div class="error__number">
+                        <h1>{% block err_number %}{% endblock %}</h1>
+                    </div>
+                    <div class="error__animation">
+                        <div class="error__circle"></div>
+                        <div class="error__symbol center">!</div>
+                    </div>
+                    <div class="error__description">
+                        <p>
+                            {% block err_description %}{% endblock %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

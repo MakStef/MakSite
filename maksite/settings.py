@@ -20,12 +20,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-ha4#f(jq4*yiaesg2sj3#vrmam@x(l4vp#96s!50*g$)r3@(@c'
+with open(BASE_DIR/'secret-key', 'r') as secret_key:
+    SECRET_KEY = secret_key.read()
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['makstef.pythonanywhere.com', '*']
 
 
 # Application definition
@@ -39,7 +41,6 @@ AUTHENTICATION_BACKENDS = [
 
 INSTALLED_APPS = [
     'channels',
-    'chatrooms',
 
     'allauth',
     'allauth.account',
@@ -56,6 +57,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'sass_processor',
+    'chatrooms',
     'main',
 ]
 
@@ -174,3 +176,10 @@ ACCOUNT_EMAIL_REQUIRED = True
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+
+# Handlers for error codes
+handler400 = 'main.views.handler400'
+handler403 = 'main.views.handler403'
+handler404 = 'main.views.handler404'
+handler500 = 'main.views.handler500'
