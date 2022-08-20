@@ -70,9 +70,8 @@ img {
 }
 
 // ================= Import styles =================
-@import "../../../main/static/main/scss/vars.scss",
-    "../../../main/static/main/scss/multipurpose.scss",
-    "../../../main/static/main/scss/mixins.scss";
+@import "../main/scss/vars.scss", "../main/scss/multipurpose.scss",
+    "../main/scss/mixins.scss";
 
 // ================= Style =================
 .wrapper {
@@ -139,45 +138,61 @@ input[type="checkbox"] {
     opacity: 1;
     position: relative;
     width: 0;
-    height: 16px;
+    height: 1rem;
 
     &::before,
     &::after {
-        transition: 0.4s;
+        z-index: 1;
+        transition: all 0.4s;
         content: "";
         display: block;
         position: absolute;
-        top: 9px;
-        left: -4px;
-        border-radius: 2px;
-        width: 18px;
-        height: 2px;
-        background-color: #000;
+        border: 2px solid #000;
+        border-radius: 4px;
+        height: 100%;
+        aspect-ratio: 1;
+        background-color: transparent;
+        left: -0.5rem;
     }
     &::before {
-        transform: rotate(42deg);
+        border-bottom: none;
+        border-right: none;
     }
     &::after {
-        transform: rotate(-42deg);
+        border-top: none;
+        border-left: none;
     }
 
     &:checked {
+        &::before,
+        &::after {
+            border: none;
+            background-color: #fff;
+        }
         &::before {
-            left: -6px;
-            top: 14px;
+            left: -0.5rem;
+            bottom: 0px;
             width: 8px;
+            height: 2px;
             transform: rotate(40deg);
         }
         &::after {
+            left: calc(2px - 0.5rem);
+            top: 10px;
+            bottom: 0px;
+            width: 16px;
+            height: 2px;
             transform: rotate(-60deg);
         }
     }
     &:focus {
         box-shadow: none;
 
-        &::before,
-        &::after {
-            background-color: rgb(32, 134, 223);
+        &:checked {
+            &::before,
+            &::after {
+                background-color: #05d5ff;
+            }
         }
     }
 }
