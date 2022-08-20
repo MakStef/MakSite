@@ -34,10 +34,10 @@ class IndexView(TemplateView, ExtraContextMixin):
                 makstef,
                 maksym,
                 stefaniv,
-                web design, 
-                web development, 
-                free lance web dev, 
-                python web dev, 
+                web design,
+                web development,
+                free lance web dev,
+                python web dev,
                 fullstack web dev,
                 web dev in python,
                 freelancer web dev,
@@ -66,3 +66,19 @@ class HelpView(TemplateView, ExtraContextMixin):
         "site_description": site_description,
         "site_keywords": site_keywords,
     }
+
+
+def handler400(request, exception, template_name='400.html'):
+    return render(request, template_name)
+
+
+def handler403(request, exception, template_name='403.html'):
+    return render(request, template_name)
+
+
+def handler404(request, exception, template_name='404.html'):
+    return render(request, template_name)
+
+
+def handler500(request, exception, template_name='500.html'):
+    return render(request, template_name)

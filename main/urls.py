@@ -3,7 +3,7 @@ from django.urls import path
 from .views import (
     IndexView,
     HelpView,
-    PortfolioJsonListView
+    PortfolioJsonListView,
 )
 
 app_name = 'main'
