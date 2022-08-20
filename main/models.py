@@ -1,5 +1,4 @@
 from django.db import models
-from .utils.normalize import normalize_link
 # Create your models here.
 
 
@@ -25,9 +24,6 @@ class Portfolio(models.Model):
         if len(objects) == 0:
             self.is_first = True
 
-            # Normalizing link
-            self.link = normalize_link(self.link)
-
             # Commit saving
             super().save(*args, **kwargs)
 
@@ -44,9 +40,6 @@ class Portfolio(models.Model):
         # If object was in array and is not first, then is_first opposite of previous items
         else:
             self.is_first = not objects[objects.index(self) - 1].is_first
-
-        # Normalizing link
-        self.link = normalize_link(self.link)
 
         # Commit saving
         super().save(*args, **kwargs)
