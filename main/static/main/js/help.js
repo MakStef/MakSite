@@ -31,7 +31,7 @@ const worksAt = new PopUp("worksAt", worksContainer);
 const worksAtButton = document.querySelector(".help__item_works-at")
 worksAtButton.onclick = ()=> worksAt.showPopUp();
 
-const sourcessContainer = document.createElement('div'), sourcesTable = document.createElement('div');
+const sourcesContainer = document.createElement('div'), sourcesTable = document.createElement('div');
 
 sourcesContainer.classList.add("sources-container");
 sourcesTable.classList.add("sources-table table");
@@ -58,4 +58,4 @@ sourcesContainer.append(sourcesTable);
 sourcesPopUo = new PopUp("sources", sourcesContainer);
 
 const sourcesButton = document.querySelector(".help__item_sources")
-worksAtButton.onclick = ()=> sourcesPopUp.showPopUp();
+sourcesButton.onclick = ()=> sourcesPopUp.showPopUp();
