@@ -55,7 +55,7 @@ for (const [name, link] of Object.entries(sourceSites)) {
 
 sourcesContainer.append(sourcesTable);
 
-sourcesPopUo = new PopUp("sources", sourcesContainer);
+const sourcesPopUp = new PopUp("sources", sourcesContainer);
 
 const sourcesButton = document.querySelector(".help__item_sources")
 sourcesButton.onclick = ()=> sourcesPopUp.showPopUp();
