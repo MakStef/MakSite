@@ -1,5 +1,5 @@
 import {newTextInput, clearTextInput} from './inputs.js';
-import PopUp from 'http://localhost:8000/static/main/js/popUp.js';
+import PopUp from 'http://makstef.pythonanywhere.com/static/main/js/popUp.js';
 
 let messageValue = '';
 const messageInputObj = {
