@@ -105,7 +105,11 @@ document.getElementById("chat-message-submit").onclick = () => {
     }
 }
 chatSocket.onclose = function(e) {
-    console.error('Chat socket closed unexpectedly');
+    console.error(
+        `Chat socket closed unexpectedly\n
+        Error code: ${e.code}\n
+        Error reason : ${e.reason}`
+    );
 };
 document.getElementById(messageInputObj.id).focus();
 document.getElementById(messageInputObj.id).onkeyup = (e)=>{(e.keyCode === 13)? document.querySelector('#chat-message-submit').click() : false}
