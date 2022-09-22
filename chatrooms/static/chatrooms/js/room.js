@@ -1,6 +1,14 @@
 import {newTextInput, clearTextInput} from './inputs.js';
 import PopUp from 'http://makstef.pythonanywhere.com/static/main/js/popUp.js';
 
+const unsupport = document.createElement('div'),
+unsupportMessage = document.createElement('p');
+unsupport.classList.add('unsupport');
+unsupportMessage.classList.add('unsupport__message');
+unsupportMessage.innerText = `We are very sorry, but current hosting doesn't support this chat app. \nWe'll fix it as fast, as we can! \nTurned on offline version.`
+unsupport.append(unsupportMessage);
+let unsupportPopUp = new PopUp('unsupport-pop-up', unsupport);
+
 let messageValue = '';
 const messageInputObj = {
     'id' : "chat-message-input",
@@ -107,9 +115,10 @@ document.getElementById("chat-message-submit").onclick = () => {
 chatSocket.onclose = function(e) {
     console.error(
         `Chat socket closed unexpectedly\n
-        Error code: ${e.code}\n
-        Error reason : ${e.reason}`
+        Error code: ${e.code}`
     );
+    unsupportPopUp.showPopUp();
+    console.warn('Turned on offline mode. Try refresh page.');
 };
 document.getElementById(messageInputObj.id).focus();
 document.getElementById(messageInputObj.id).onkeyup = (e)=>{(e.keyCode === 13)? document.querySelector('#chat-message-submit').click() : false}
